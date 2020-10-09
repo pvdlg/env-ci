@@ -1,5 +1,5 @@
 const test = require('ava');
-const vsts = require('../../services/vsts');
+const ado = require('../../services/azure-devops');
 
 const env = {
   BUILD_BUILDURI: 'https://fabrikamfiber.visualstudio.com/_git/Scripts',
@@ -10,9 +10,9 @@ const env = {
 };
 
 test('Push', t => {
-  t.deepEqual(vsts.configuration({env}), {
-    name: 'Visual Studio Team Services',
-    service: 'vsts',
+  t.deepEqual(ado.configuration({env}), {
+    name: 'Azure DevOps',
+    service: 'azure-devops',
     commit: '5678',
     build: '1234',
     branch: 'master',
@@ -24,9 +24,9 @@ test('Push', t => {
 });
 
 test('Push - with long branch name', t => {
-  t.deepEqual(vsts.configuration({env: {...env, BUILD_SOURCEBRANCH: 'refs/heads/master'}}), {
-    name: 'Visual Studio Team Services',
-    service: 'vsts',
+  t.deepEqual(ado.configuration({env: {...env, BUILD_SOURCEBRANCH: 'refs/heads/master'}}), {
+    name: 'Azure DevOps',
+    service: 'azure-devops',
     commit: '5678',
     build: '1234',
     branch: 'master',
@@ -39,7 +39,7 @@ test('Push - with long branch name', t => {
 
 test('PR', t => {
   t.deepEqual(
-    vsts.configuration({
+    ado.configuration({
       env: {
         ...env,
         SYSTEM_PULLREQUEST_PULLREQUESTID: '9',
@@ -48,8 +48,8 @@ test('PR', t => {
       },
     }),
     {
-      name: 'Visual Studio Team Services',
-      service: 'vsts',
+      name: 'Azure DevOps',
+      service: 'azure-devops',
       commit: '5678',
       build: '1234',
       branch: 'master',

@@ -36,6 +36,7 @@
   "homepage": "https://github.com/pvdlg/env-ci#readme",
   "keywords": [
     "appveyor",
+    "azure-devops",
     "bamboo",
     "bitbucket",
     "bitrise",
@@ -61,7 +62,6 @@
     "teamcity",
     "travis",
     "variable",
-    "vsts",
     "wercker"
   ],
   "license": "MIT",

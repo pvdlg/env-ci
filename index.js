@@ -4,6 +4,7 @@ const process = require('process'); // eslint-disable-line node/prefer-global/pr
 const git = require('./services/git');
 
 const services = {
+  ado: require('./services/azure-devops'),
   appveyor: require('./services/appveyor'),
   bamboo: require('./services/bamboo'),
   bitbucket: require('./services/bitbucket'),
@@ -26,7 +27,6 @@ const services = {
   shippable: require('./services/shippable'),
   teamcity: require('./services/teamcity'),
   travis: require('./services/travis'),
-  vsts: require('./services/vsts'),
   wercker: require('./services/wercker'),
 };
 
